@@ -1,4 +1,4 @@
-workflow_dispatch:name: Descargar repositorio
+name: Descargar repositorio
 on:
   workflow_dispatch:
 jobs:
