@@ -2,10 +2,7 @@
 name: Buscar archivos específicos1
 
 on:
-  push:
-    branches:
-      - uno
-  # o bien:
+ 
   workflow_dispatch:
 
 
