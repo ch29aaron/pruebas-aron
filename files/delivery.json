@@ -1,0 +1,49 @@
+{
+    "nameOcdRc": "RC-OCD-99612-CERT-20250415204415",
+    "repos": [
+      {
+        "name": "demo-javaa",
+        "env": [
+          {
+            "name": "cert",
+            "path": "INCT-CERT/INCT_JENKINSSHAREDLIBGROOVY_CERT/01.JENKINSSHAREDLIBGROOVY_DEPLOYCERT"
+          },
+          {
+            "name": "prod",
+            "path": "INCT-PROD/INCT_JENKINSSHAREDLIBGROOVY_PROD/01.JENKINSSHAREDLIBGROOVY_DEPLOYPROD",
+            "params": [
+              {
+                "type": "git",
+                "name": "RELEASE_TAG_NAME",
+                "value": "RC-3.12.0-CERT-20250415205721"
+              },
+              {
+                "type": "boolean",
+                "name": "FORCE_RELEASE",
+                "value": "true"
+              }
+            ],
+            "revert": {
+              "path": "INCT-PROD/INCT_JENKINSSHAREDLIBGROOVY_PROD/01.JENKINSSHAREDLIBGROOVY_DEPLOYPROD",
+              "params": [
+                {
+                  "type": "git",
+                  "name": "RELEASE_TAG_NAME",
+                  "value": "RC-3.11.8-CERT-20250405151847"
+                },
+                {
+                  "type": "boolean",
+                  "name": "FORCE_RELEASE",
+                  "value": "true"
+                }
+              ]
+            }
+          }
+        ],
+        "wait": true
+      }
+    ],
+    "revertCert": false,
+    "revertProd": false,
+    "ocdTimestamp": "20250415204818"
+  }

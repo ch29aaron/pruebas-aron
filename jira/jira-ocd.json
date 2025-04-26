@@ -1,0 +1,32 @@
+{
+    "datosOCD": {
+      "ticketScrum": "INCTSPD-1404",
+      "ticketOCD": "OCD-99612"
+    },
+    "responsables": {
+      "reporter": "712020:d8991df4-e6d3-4b3d-a4ed-960335a05f59",
+      "seguridad": "6411fd60c35660c269ba36c5",
+      "qe": "712020:d2985b74-cc79-435b-8ca2-d8c403df499f",
+      "clQe": "70121:6d722cbe-66ba-4cb0-a13b-9a73dfbd4155",
+      "clDev": "62e002545f7842fb1293d3ed",
+      "lt": "712020:8adbd7e9-e0ae-451d-9e9e-e3e8982924d6",
+      "po": "557058:07ad0d52-2a71-4d4f-954a-a1c839014e62",
+      "opsGobierno": "712020:56439b22-9ce8-46dc-891e-220bed83b39d",
+      "grupoAgileOps": "POOL - CLIENTE CENTRICO"
+    },
+    "datos": {
+      "summary": "Summary del cambio",
+      "description": "Descripcion del cambio",
+      "sustento": "Sustento del cambio",
+      "origenTicket": "1",
+      "nroTicket": "SDAS-1234",
+      "tipoRequerimiento": "1",
+      "diagramaArquitectura": "https://confluencedesa.devsecopsbcp.com/",
+      "diagramaInfraestructura": "https://confluencedesa.devsecopsbcp.com/",
+      "instruccionesCert": "h1. *{color:#ff0000}***CERTIFICACIÓN***{color}*\nCERT - VA A SER AUTOGENERADO LEYENDO EL ARCHIVO DELIVERY OCD",
+      "instruccionesProd": "h1. *{color:#ff0000}***PRODUCCIÓN***{color}*\nPROD - VA A SER AUTOGENERADO LEYENDO EL ARCHIVO DELIVERY OCD",
+      "instruccionesReversion": "h1. *{color:#ff0000}***REVERSIÓN***{color}*\nREV - VA A SER AUTOGENERADO LEYENDO EL ARCHIVO DELIVERY OCD",
+      "tipoRatificacion": "1",
+      "indisponibilidadCanal": "Sí"
+    }
+  }

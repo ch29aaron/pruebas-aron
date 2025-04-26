@@ -1,0 +1,37 @@
+cert:
+  - credential-id: APZW3PRD-BCP-Software-Engineering
+    project:
+      - name: BCP-INCT-JOB01-CERT
+        path_origen:
+          - INCT-DEV/DAVID/prueba-parse/llllllll
+        path_destino:
+          - INCT-DEV/DAVID/prueba-gabo/prueba-gabo-v2
+      - name: BCP-INCT-JOB01-CERT4
+        path_origen:
+          - INCT-DEV/DAVID/gabriel-move/MIGRACION-BB
+        path_destino:
+          - INCT-DEV/DAVID/prueba-gabo/prueba-gabo-v2
+      - name: BCP-INCT-JOB01-CERT4
+        path_origen:
+          - INCT-DEV/DAVID/gabriel-move/llllllll
+        path_destino:
+          - INCT-DEV/DAVID/prueba-gabo/prueba-gabo-v2
+      - name: BCP-INCT-JOB01-CERT4
+        path_origen:
+          - INCT-DEV/DAVID/gabriel-move/TEST-ERROR-RC
+        path_destino:
+          - INCT-DEV/DAVID/prueba-gabo/prueba-gabo-v2
+      - name: BCP-INCT-JOB01-CERT4
+        path_origen:
+          - INCT-DEV/DAVID/gabriel-move/TEST_OCD_MOVE_JOB_PROD
+        path_destino:
+          - INCT-DEV/DAVID/prueba-gabo/prueba-gabo-v2
+ 
+prod:
+  - credential-id: APZW3PRD-BCP-Software-Engineering
+    project:
+      - name: BCP-INCT-JOB01-CERT
+        path_origen:
+          - INCT-DEV/DAVID/prueba-parse/llllllll
+        path_destino:
+          - INCT-PROD/DAVID/prueba-gabo/prueba-gabo-v2

@@ -1,0 +1,24 @@
+repos:
+  - name: "demo-javaa"
+    env:
+      - name: "cert"
+        defaults: &defaults
+          params:
+            - { type: string, name: TIPO_DE_PRUEBA, value: WEB }
+            - { type: string, name: NAVEGADOR, value: chrome_v100 }
+            - { type: boolean, name: KARATE_DSL, value: true }
+        testing:
+          path: INCT-DEV/DAVID/OCD/incttc-web-continuous-testing
+          fase:
+            QA:
+<<: *defaults
+              params:
+                - { type: string, name: TAGS, value: "@REGRESION @NUEVO" }
+            REVQA:
+<<: *defaults
+              params:
+                - { type: string, name: TAGS, value: "@REGRESION" }
+            REQA:
+<<: *defaults
+              params:
+                - { type: string, name: TAGS, value: "@REGRESION @NUEVO" }
