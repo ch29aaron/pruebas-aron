@@ -1,11 +1,8 @@
 # .github/workflows/search-files.yml
-name: Buscar archivos específicos1
+name: Buscar archivos específicos156
 
 on:
-  push:
-    branches:
-      - uno
-  # o bien:
+
   workflow_dispatch:
 
 
