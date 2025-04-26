@@ -1,12 +1,42 @@
-name: Descargar repositorio
+# .github/workflows/search-files.yml
+name: Buscar archivos específicos
+
 on:
   workflow_dispatch:
+
 jobs:
-  download-repository:
+  find-files:
     runs-on: ubuntu-latest
     steps:
-    - name: Check out repository
-      uses: actions/checkout@v3
-    - name: Ver contenido del repositorio
-      run: |
-        ls -al
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: Buscar y notificar archivos
+        run: |
+          required_files=(
+            "delivery.json"
+            "jira-ocd.json"
+            "movejobs.yml"
+            "testing.json"
+          )
+
+          missing=false
+
+          for filename in "${required_files[@]}"; do
+            echo "🔍 Buscando ${filename}..."
+            result=$(find . -type f -name "$filename" -print -quit)
+
+            if [ -z "$result" ]; then
+              echo "::error::No se encontró '${filename}'"
+              missing=true
+            else
+              echo "✅ Archivo '${filename}' encontrado en: ${result}"
+            fi
+          done
+
+          if [ "$missing" = true ]; then
+            echo "Al menos un archivo no fue encontrado. Marcando fallo."
+            exit 1
+          else
+            echo "Todos los archivos requeridos fueron encontrados."
+          fi
