@@ -1,4 +1,4 @@
-name: Pruebas manuales
+name: Pruebas manuales5
 
 on:
   workflow_dispatch:
