@@ -1,26 +1,37 @@
-name: Pruebas manuales5
+name: Validate Blob Storage Connectivity
 
 on:
   workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Rama a testear'
-        required: true
-        default: 'main'
 
 jobs:
-  run-on-branch:
-    name: Ejecutar en la rama especificada
+  test-blob:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout de la rama seleccionada
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.inputs.branch }}
-
-      - name: Mostrar archivos (ejemplo)
+      - name: Show runner public IP
         run: |
-          echo "Trabajando sobre la rama '${{ github.event.inputs.branch }}'"
-          ls -R .
+          echo "Runner IP:"
+          curl -s https://api.ipify.org
+          echo ""
 
-      # Aquí puedes añadir tus pasos de build, test o deploy
+      - name: Test DNS resolution
+        run: |
+          nslookup 21312wsaasas.blob.core.windows.net
+
+      - name: Test TCP connectivity (443)
+        run: |
+          timeout 5 bash -c "</dev/tcp/21312wsaasas.blob.core.windows.net/443" \
+          && echo "TCP OK" \
+          || (echo "TCP FAILED" && exit 1)
+
+      - name: Install Azure CLI
+        run: |
+          curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+      - name: List blobs using SAS
+        run: |
+          az storage blob list \
+            --account-name 21312wsaasas \
+            --container-name testeasd \
+            --sas-token "sv=2024-11-04&ss=b&srt=sco&sp=rltfx&se=2027-02-27T14:50:19Z&st=2026-02-27T06:35:19Z&spr=https&sig=MX8p4xrnvTgCXJaY8VRT2TaW4htpoQW8h0Mld9oS0Io%3D" \
+            --output table
