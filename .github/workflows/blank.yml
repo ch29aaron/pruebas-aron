@@ -1,37 +1,21 @@
-name: Validate Blob Storage Connectivity
+name: Test Blob From Python
 
 on:
   workflow_dispatch:
 
 jobs:
-  test-blob:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Show runner public IP
-        run: |
-          echo "Runner IP:"
-          curl -s https://api.ipify.org
-          echo ""
+      - uses: actions/checkout@v4
 
-      - name: Test DNS resolution
+      - name: Install Python dependencies
         run: |
-          nslookup 21312wsaasas.blob.core.windows.net
+          python -m pip install --upgrade pip
+          pip install azure-storage-blob
 
-      - name: Test TCP connectivity (443)
-        run: |
-          timeout 5 bash -c "</dev/tcp/21312wsaasas.blob.core.windows.net/443" \
-          && echo "TCP OK" \
-          || (echo "TCP FAILED" && exit 1)
-
-      - name: Install Azure CLI
-        run: |
-          curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-
-      - name: List blobs using SAS
-        run: |
-          az storage blob list \
-            --account-name 21312wsaasas \
-            --container-name testeasd \
-            --sas-token "sv=2024-11-04&ss=b&srt=sco&sp=rltfx&se=2027-02-27T14:50:19Z&st=2026-02-27T06:35:19Z&spr=https&sig=MX8p4xrnvTgCXJaY8VRT2TaW4htpoQW8h0Mld9oS0Io%3D" \
-            --output table
+      - name: Run blob test
+        env:
+          AZURE_STORAGE_SAS: "sv=2024-11-04&ss=b&srt=sco&sp=rltfx&se=2027-02-27T14:50:19Z&st=2026-02-27T06:35:19Z&spr=https&sig=MX8p4xrnvTgCXJaY8VRT2TaW4htpoQW8h0Mld9oS0Io%3D"
+        run: python test_blob.py
