@@ -10,8 +10,8 @@ logging.basicConfig(
 )
 
 def get_blob_container_client():
-    storage_account = "21312wsaasas"
-    container_name = "testeasd"
+    storage_account = "3243243wsdsad"
+    container_name = "sdasdsxcxzxc423"
 
     sas_token = os.getenv("AZURE_STORAGE_SAS")
 
